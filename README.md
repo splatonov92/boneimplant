@@ -10,5 +10,3 @@ Start guide
 4. npm start
 
 Powered by: node, react.
-
-Author: S.Platonov
