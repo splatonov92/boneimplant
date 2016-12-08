@@ -1,0 +1,28 @@
+{
+  "name": "boneimplant",
+  "version": "0.0.1",
+  "description": "BonImplantWeb",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./backend/index.js --harmony-generators"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/splatonov92/boneimplant.git"
+  },
+  "author": "s.platonov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/splatonov92/boneimplant/issues"
+  },
+  "homepage": "https://github.com/splatonov92/boneimplant#readme",
+  "dependencies": {
+    "koa": "^2.0.0-alpha.7",
+    "koa-static": "^2.0.0",
+    "react": "^15.4.1",
+    "react-dom": "^15.4.1",
+    "react-router": "^3.0.0",
+    "webpack": "^1.13.3"
+  }
+}
