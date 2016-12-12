@@ -21628,7 +21628,7 @@
 
 
 	// module
-	exports.push([module.id, "body {\n    padding: 0px;\n    margin: 0px;\n}\n\n.header-panel {\n    top: 0px;\n    left: 0px;\n    width: 100%;\n    height: 64px;\n}\n\n.main-background-color {\n    background-color: #7E57C2;\n}\n\n.padding-5 {\n    padding: 5px;\n}\n\n.left {text-align: left;}\n.center {text-align: center;}\n.right {text-align: right;}\n\n.top { vertical-align: top; }\n.middle { vertical-align: middle; }\n.bottom { vertical-align: bottom; }", ""]);
+	exports.push([module.id, "body {\n    padding: 0px;\n    margin: 0px;\n    font-family: Roboto, sans-serif;\n    font-size: 16px;\n}\n\n.header-panel {\n    top: 0px;\n    left: 0px;\n    width: 100%;\n    height: 64px;\n}\n\n.main-background-color {\n    background-color: #7E57C2;\n}\n\n.left-panel {\n    width: 256px;\n    height: 100%;\n    position: fixed;\n    top: 0px;\n    left: 0px;\n    box-sizing: border-box;\n    box-shadow: rgba(0, 0, 0, 0.156863) 0px 3px 10px, rgba(0, 0, 0, 0.227451) 0px 3px 10px;\n}\n.menu-item {\n    margin-left: 0px;\n    padding: 16px;\n    cursor: pointer;\n}\n.menu-item:hover {\n    background-color: rgba(0,0,0,0.0980392);\n}\n.main-title {\n    cursor: pointer;\n    font-size: 24px;\n    color: rgb(255, 255, 255);\n    line-height: 64px;\n    font-weight: 300;\n    padding-left: 24px;\n    margin-bottom: 8px;\n}\n\n.padding-5 {\n    padding: 5px;\n}\n\n.left {text-align: left;}\n.center {text-align: center;}\n.right {text-align: right;}\n\n.top { vertical-align: top; }\n.middle { vertical-align: middle; }\n.bottom { vertical-align: bottom; }", ""]);
 
 	// exports
 
@@ -21983,8 +21983,31 @@
 	        value: function render() {
 	            return _react2.default.createElement(
 	                'div',
-	                null,
-	                'Left'
+	                { className: 'left-panel' },
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'main-title main-background-color' },
+	                    'BoneImplant'
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'padding-5' },
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'menu-item' },
+	                        'DICOM'
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'menu-item' },
+	                        'STL'
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'menu-item' },
+	                        'Strain'
+	                    )
+	                )
 	            );
 	        }
 	    }]);
