@@ -12,6 +12,15 @@ body {
     height: 64px;
 }
 
+.container {
+    position: fixed;
+    top: 64px;
+    left: 256px;
+    width: 75%;
+    height: 75%;
+    padding: 25px;
+} 
+
 .main-background-color {
     background-color: #7E57C2;
 }
@@ -27,10 +36,20 @@ body {
 }
 .menu-item {
     margin-left: 0px;
+}
+.menu-item a {
+    text-decoration: none;
     padding: 16px;
     cursor: pointer;
+    color: black; 
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
 }
-.menu-item:hover {
+.menu-item a.active {
+    background-color: #B39DDB;
+}
+.menu-item a:hover {
     background-color: rgba(0,0,0,0.0980392);
 }
 .main-title {

@@ -8,7 +8,10 @@ class App extends React.Component {
         return(
             <div>
                 <Top></Top>
-                <Left></Left>
+                <Left location={this.props.location}></Left>
+                <div className="container">
+                    {this.props.children}
+                </div>
             </div>
         );
     }
