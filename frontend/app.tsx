@@ -1,14 +1,12 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Top from './top';
-import Left from './left';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+//import Top from './top';
+//import Left from './left';
 
 class App extends React.Component {
     render() {
         return(
             <div>
-                <Top></Top>
-                <Left location={this.props.location}></Left>
                 <div className="container">
                     {this.props.children}
                 </div>
