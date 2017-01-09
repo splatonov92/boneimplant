@@ -1,7 +1,7 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 
-class DicomModule extends React.Component {
+class DicomModule extends React.Component<any, any> {
     render () {
         return (
             <div>

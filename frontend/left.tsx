@@ -1,8 +1,8 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import { Router, Route, Link, browserHistory } from 'react-router';
 
-class Left extends React.Component {
+class Left extends React.Component<any, any> {
     render() {
         return(
             <div className="left-panel">

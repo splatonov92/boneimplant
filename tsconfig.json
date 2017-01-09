@@ -1,17 +1,11 @@
 {
-    "compilerOptions": {
-        "outDir": "./public/",
-        "sourceMap": true,
-        "noImplicitAny": false,
-        "module": "commonjs",
-        "target": "es6",
-        "jsx": "react",
-        "allowJs": true,
-        "moduleResolution": "classic",
-        "experimentalDecorators": true,
-        "emitDecoratorMetadata": true
-    },
-    "files": [
-        "./typings/index.d.ts"
-    ]
+  "compilerOptions": {
+    "allowJs": true,
+    "target": "es6",
+    "jsx": "react"
+  },
+  "files": [
+    "./typings/index.d.ts",
+    "./frontend/index.tsx"
+  ]
 }

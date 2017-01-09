@@ -1,10 +1,4 @@
-var express = require('express');
-var port = 3000;
-var app = express();
+//import starter from './backend/index.js';
+var starter = require ('./backend');
 
-
-app.use(express.static(__dirname + '/public'));
-
-app.listen(port);
-
-console.log(`Server listening at port ${port}`);
+starter.default.run();
