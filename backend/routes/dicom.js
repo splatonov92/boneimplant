@@ -1,5 +1,5 @@
 "use strict";
-var express = require("express");
+var express = require('express');
 var router = express.Router();
 router.use(function timeLog(req, res, next) {
     console.log('Dicom Time: ' + Date.now());
@@ -8,5 +8,8 @@ router.use(function timeLog(req, res, next) {
 router.get('/', function (req, res) {
     res.send('dicom page');
 });
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = router;
+router.get('/loadfile', function (req, res) {
+    res.send('load file answer');
+});
+exports.__esModule = true;
+exports["default"] = router;

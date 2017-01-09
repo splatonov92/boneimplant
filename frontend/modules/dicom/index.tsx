@@ -1,13 +1,13 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import SourceImagePanel from './sourceImage';
 
 class DicomModule extends React.Component<any, any> {
     render () {
-        return (
-            <div>
-                DicomModule
-            </div>
-        );
+        return <div>
+                <div> DicomModule </div>
+                <SourceImagePanel />
+            </div>;
     }
 }
 
