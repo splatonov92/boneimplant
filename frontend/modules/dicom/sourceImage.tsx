@@ -3,25 +3,35 @@ import * as ReactDOM from 'react-dom';
 import './dicom.css'; 
 
 interface SourcePanelStates {
-    file
+    file;
+    fileName: string
 }
 
 class SourceImagePanel extends React.Component<any, SourcePanelStates> {
     
     constructor(props: any) {
         super(props);
+
+        this.state = {
+            file: null,
+            fileName: ''
+        };
     }
 
     onChangeFileHandler(event: React.FormEvent<HTMLInputElement>) {
         console.log(event.currentTarget.value);
-        this.setState({file: event.currentTarget.value});
+        this.setState({file: event.currentTarget.value, fileName: "/dicom/loadfile"});
+    }
+
+    componentDidMount() {
+        this.setState({file: null, fileName: null});
     }
 
     componentWillMount() {
-        this.setState({file: null});
+        this.setState({file: null, fileName: null});
     }
 
-    loadFileToServer() {
+    loadFileToServer = () => {
         let fd = new FormData();
         fd.append('file', this.state.file);
 
@@ -33,18 +43,17 @@ class SourceImagePanel extends React.Component<any, SourcePanelStates> {
                 'Content-Type': 'multipart/form-data'
             },
             body: fd
-        }).then(console.log)
+        }).then(() => {
+            this.setState({file: null, fileName: ""});
+            this.setState({file: null, fileName: "/dicom/loadfile"});
+        })
     }
     
-
-
     render() {
         return <div className="image-container">
             <h4>Source image panel</h4>
-            <img className="image-dist" />
-            <p>Load choose image and load to server</p> 
-            <input type='file' onChange={this.onChangeFileHandler} />
-            <button onClick={this.loadFileToServer}>Upload file</button>
+            <img src={this.state.fileName} className="image-dist" />
+            <button onClick={this.loadFileToServer}>Load demo image</button>
         </div>;
     }
 }

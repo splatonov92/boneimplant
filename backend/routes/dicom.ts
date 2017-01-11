@@ -1,6 +1,13 @@
 import * as express from 'express';
+import {Request, Response} from "express";
 
-var router = express.Router();
+
+let
+    filename = '../test/leg.jpg',
+    router = express.Router(),
+    grayScale = 50;
+var Jimp = require("jimp");
+
 router.use(function timeLog(req, res, next) {
     console.log('Dicom Time: ' + Date.now());
     next();
@@ -11,7 +18,11 @@ router.get('/', function (req, res) {
 });
 
 router.get('/loadfile', function(req, res) {
-    res.send('load file answer');
-})
+    res.sendFile(filename);
+});
+
+router.post('/loadfile', function(req: Request, res: Response) {
+    res.sendFile(filename);
+});
 
 export default router;
