@@ -1,12 +1,11 @@
 import * as express from 'express';
-import {Request, Response} from "express";
-
+import {Request, Response} from 'express';
+import * as Jimp from "jimp";
 
 let
     filename = '../test/leg.jpg',
     router = express.Router(),
     grayScale = 50;
-var Jimp = require("jimp");
 
 router.use(function timeLog(req, res, next) {
     console.log('Dicom Time: ' + Date.now());
