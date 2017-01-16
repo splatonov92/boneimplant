@@ -28,7 +28,6 @@ class SourceImagePanel extends React.Component<any, SourcePanelStates> {
     }
 
     componentWillMount() {
-        this.setState({file: null, fileName: null});
     }
 
     loadFileToServer = () => {

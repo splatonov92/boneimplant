@@ -73,3 +73,13 @@ body {
 .top { vertical-align: top; }
 .middle { vertical-align: middle; }
 .bottom { vertical-align: bottom; }
+
+.block {display: block;}
+.inline {display: inline;}
+.inline-block {display: inline-block;}
+
+.number {
+    width: 30px;
+    padding: 5px;
+    border-radius: 5px;
+}

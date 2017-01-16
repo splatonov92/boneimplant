@@ -1,6 +1,6 @@
 module.exports = {
     entry: [
-        './frontend/index' // Your appʼs entry point
+        './src/frontend/index' 
     ],
     output: {
         path: __dirname + '/public/',
@@ -11,7 +11,6 @@ module.exports = {
     },
     module: {
         loaders: [
-            // All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.
             {
                 exclude: /(node_modules|bower_components)/,
                 test: /\.((jsx?)|(tsx?))$/,

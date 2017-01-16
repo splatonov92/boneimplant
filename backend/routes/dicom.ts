@@ -1,9 +1,10 @@
 import * as express from 'express';
 import {Request, Response} from 'express';
-import * as Jimp from "jimp";
+import * as Jimp from 'jimp';
+import * as path from 'path';
 
 let
-    filename = '../test/leg.jpg',
+    filename = __dirname + '/../test/leg.jpg',
     router = express.Router(),
     grayScale = 50;
 
@@ -17,11 +18,11 @@ router.get('/', function (req, res) {
 });
 
 router.get('/loadfile', function(req, res) {
-    res.sendFile(filename);
+    res.sendFile(path.resolve(filename));
 });
 
 router.post('/loadfile', function(req: Request, res: Response) {
-    res.sendFile(filename);
+    res.sendFile(path.resolve(filename));
 });
 
 export default router;
