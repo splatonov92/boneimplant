@@ -21780,7 +21780,7 @@
 
 	  var match = void 0,
 	      lastIndex = 0,
-	      matcher = /:([a-zA-Z_$][a-zA-Z0-9_$]*)|\*\*|\*|\(|\)|\\\(|\\\)/g;
+	      matcher = /:([a-zA-Z_$][a-zA-Z0-9_$]*)|\*\*|\*|\(|\)/g;
 	  while (match = matcher.exec(pattern)) {
 	    if (match.index !== lastIndex) {
 	      tokens.push(pattern.slice(lastIndex, match.index));
@@ -21800,10 +21800,6 @@
 	      regexpSource += '(?:';
 	    } else if (match[0] === ')') {
 	      regexpSource += ')?';
-	    } else if (match[0] === '\\(') {
-	      regexpSource += '\\(';
-	    } else if (match[0] === '\\)') {
-	      regexpSource += '\\)';
 	    }
 
 	    tokens.push(match[0]);
@@ -21958,10 +21954,6 @@
 	      parenCount -= 1;
 
 	      if (parenCount) parenHistory[parenCount - 1] += parenText;else pathname += parenText;
-	    } else if (token === '\\(') {
-	      pathname += '(';
-	    } else if (token === '\\)') {
-	      pathname += ')';
 	    } else if (token.charAt(0) === ':') {
 	      paramName = token.substring(1);
 	      paramValue = params[paramName];
@@ -22829,7 +22821,7 @@
 	  return runTransitionHooks(hooks.length, function (index, replace, next) {
 	    var wrappedNext = function wrappedNext() {
 	      if (enterHooks.has(hooks[index])) {
-	        next.apply(undefined, arguments);
+	        next();
 	        enterHooks.remove(hooks[index]);
 	      }
 	    };
@@ -22853,7 +22845,7 @@
 	  return runTransitionHooks(hooks.length, function (index, replace, next) {
 	    var wrappedNext = function wrappedNext() {
 	      if (changeHooks.has(hooks[index])) {
-	        next.apply(undefined, arguments);
+	        next();
 	        changeHooks.remove(hooks[index]);
 	      }
 	    };
@@ -23255,14 +23247,9 @@
 	    if ((0, _PromiseUtils.isPromise)(indexRoutesReturn)) indexRoutesReturn.then(function (indexRoute) {
 	      return callback(null, (0, _RouteUtils.createRoutes)(indexRoute)[0]);
 	    }, callback);
-	  } else if (route.childRoutes || route.getChildRoutes) {
-	    var onChildRoutes = function onChildRoutes(error, childRoutes) {
-	      if (error) {
-	        callback(error);
-	        return;
-	      }
-
-	      var pathless = childRoutes.filter(function (childRoute) {
+	  } else if (route.childRoutes) {
+	    (function () {
+	      var pathless = route.childRoutes.filter(function (childRoute) {
 	        return !childRoute.path;
 	      });
 
@@ -23278,12 +23265,7 @@
 	      }, function (err, routes) {
 	        callback(null, routes);
 	      });
-	    };
-
-	    var result = getChildRoutes(route, location, paramNames, paramValues, onChildRoutes);
-	    if (result) {
-	      onChildRoutes.apply(undefined, result);
-	    }
+	    })();
 	  } else {
 	    callback();
 	  }
@@ -23337,7 +23319,7 @@
 	    // By assumption, pattern is non-empty here, which is the prerequisite for
 	    // actually terminating a match.
 	    if (remainingPathname === '') {
-	      var _ret = function () {
+	      var _ret2 = function () {
 	        var match = {
 	          routes: [route],
 	          params: createParams(paramNames, paramValues)
@@ -23368,7 +23350,7 @@
 	        };
 	      }();
 
-	      if ((typeof _ret === 'undefined' ? 'undefined' : _typeof(_ret)) === "object") return _ret.v;
+	      if ((typeof _ret2 === 'undefined' ? 'undefined' : _typeof(_ret2)) === "object") return _ret2.v;
 	    }
 	  }
 
@@ -23946,7 +23928,7 @@
 
 	    if (router) {
 	      // If user does not specify a `to` prop, return an empty anchor tag.
-	      if (!to) {
+	      if (to == null) {
 	        return _react2.default.createElement('a', props);
 	      }
 
@@ -24063,10 +24045,6 @@
 	      var _this = this;
 
 	      var router = this.props.router || this.context.router;
-	      if (!router) {
-	        return _react2.default.createElement(WrappedComponent, this.props);
-	      }
-
 	      var params = router.params,
 	          location = router.location,
 	          routes = router.routes;
@@ -26530,7 +26508,7 @@
 
 
 	// module
-	exports.push([module.id, "body {\n    padding: 0px;\n    margin: 0px;\n    font-family: Roboto, sans-serif;\n    font-size: 16px;\n}\n\n.header-panel {\n    top: 0px;\n    left: 0px;\n    width: 100%;\n    height: 64px;\n}\n\n.container {\n    position: fixed;\n    top: 64px;\n    left: 256px;\n    width: 75%;\n    height: 75%;\n    padding: 25px;\n} \n\n.main-background-color {\n    background-color: #7E57C2;\n}\n\n.left-panel {\n    width: 256px;\n    height: 100%;\n    position: fixed;\n    top: 0px;\n    left: 0px;\n    box-sizing: border-box;\n    box-shadow: rgba(0, 0, 0, 0.156863) 0px 3px 10px, rgba(0, 0, 0, 0.227451) 0px 3px 10px;\n}\n.menu-item {\n    margin-left: 0px;\n}\n.menu-item a {\n    text-decoration: none;\n    padding: 16px;\n    cursor: pointer;\n    color: black; \n    width: 100%;\n    display: block;\n    box-sizing: border-box;\n}\n.menu-item a.active {\n    background-color: #B39DDB;\n}\n.menu-item a:hover {\n    background-color: rgba(0,0,0,0.0980392);\n}\n.main-title {\n    cursor: pointer;\n    font-size: 24px;\n    color: rgb(255, 255, 255);\n    line-height: 64px;\n    font-weight: 300;\n    padding-left: 24px;\n    margin-bottom: 8px;\n}\n\n.padding-5 {\n    padding: 5px;\n}\n\n.left {text-align: left;}\n.center {text-align: center;}\n.right {text-align: right;}\n\n.top { vertical-align: top; }\n.middle { vertical-align: middle; }\n.bottom { vertical-align: bottom; }\n\n.block {display: block;}\n.inline {display: inline;}\n.inline-block {display: inline-block;}\n\n.number {\n    width: 30px;\n    padding: 5px;\n    border-radius: 5px;\n}", ""]);
+	exports.push([module.id, "body {\n    padding: 0px;\n    margin: 0px;\n    font-family: Roboto, sans-serif;\n    font-size: 16px;\n}\n\n.header-panel {\n    top: 0px;\n    left: 0px;\n    width: 100%;\n    height: 64px;\n}\n\n.container {\n    position: fixed;\n    top: 64px;\n    left: 256px;\n    width: 75%;\n    height: 75%;\n    padding: 25px;\n} \n\n.main-background-color {\n    background-color: #7E57C2;\n}\n\n.left-panel {\n    width: 256px;\n    height: 100%;\n    position: fixed;\n    top: 0px;\n    left: 0px;\n    box-sizing: border-box;\n    box-shadow: rgba(0, 0, 0, 0.156863) 0px 3px 10px, rgba(0, 0, 0, 0.227451) 0px 3px 10px;\n}\n.menu-item {\n    margin-left: 0px;\n}\n.menu-item a {\n    text-decoration: none;\n    padding: 16px;\n    cursor: pointer;\n    color: black; \n    width: 100%;\n    display: block;\n    box-sizing: border-box;\n}\n.menu-item a.active {\n    background-color: #B39DDB;\n}\n.menu-item a:hover {\n    background-color: rgba(0,0,0,0.0980392);\n}\n.main-title {\n    cursor: pointer;\n    font-size: 24px;\n    color: rgb(255, 255, 255);\n    line-height: 64px;\n    font-weight: 300;\n    padding-left: 24px;\n    margin-bottom: 8px;\n}\n\n.padding-5 {\n    padding: 5px;\n}\n\n.left {text-align: left;}\n.center {text-align: center;}\n.right {text-align: right;}\n\n.top { vertical-align: top; }\n.middle { vertical-align: middle; }\n.bottom { vertical-align: bottom; }\n\n.block {display: block;}\n.inline {display: inline;}\n.inline-block {display: inline-block;}\n\n.number {\n    width: 30px;\n    padding: 5px;\n    border-radius: 5px;\n}\n\n.em10 {\n    width: 10em;\n}", ""]);
 
 	// exports
 
@@ -27025,7 +27003,7 @@
 	    }, {
 	        key: "render",
 	        value: function render() {
-	            return React.createElement("div", { className: "image-container" }, React.createElement("h4", null, "Source image panel"), React.createElement("img", { src: this.state.fileName, className: "image-dist" }), React.createElement("button", { onClick: this.loadFileToServer }, "Load demo image"));
+	            return React.createElement("div", { className: "inline image-container" }, React.createElement("h4", null, "Source image panel"), React.createElement("img", { src: this.state.fileName, className: "image-dist" }), React.createElement("button", { onClick: this.loadFileToServer }, "Load demo image"));
 	        }
 	    }]);
 
@@ -27162,7 +27140,7 @@
 	    }, {
 	        key: "render",
 	        value: function render() {
-	            return React.createElement("div", null, "Toolbox", React.createElement("div", null, React.createElement("div", { className: "inline" }, "Grayscale:", React.createElement("input", { type: "checkbox", onChange: this.handleChangeGrayscale })), React.createElement("div", { className: "inline" }, "Brightness:", React.createElement("input", { type: "number", step: "any", className: "number", value: this.state.brightness, onChange: this.handleChangeBrightness })), React.createElement("div", { className: "inline" }, "Contrast:", React.createElement("input", { type: "number", step: "any", className: "number", value: this.state.contrast, onChange: this.handleChangeContrast })), React.createElement("div", { className: "inline" }, "Gaussian:", React.createElement("input", { type: "number", step: "any", className: "number", value: this.state.gaussian, onChange: this.handleChangeGaussian })), React.createElement("div", { className: "inline" }, "Blur:", React.createElement("input", { type: "number", step: "any", className: "number", value: this.state.blur, onChange: this.handleChangeBlur }))));
+	            return React.createElement("div", { className: "inline" }, "Toolbox", React.createElement("div", { className: "inline" }, React.createElement("div", null, React.createElement("div", { className: "em10 right inline-block" }, "Grayscale:"), React.createElement("input", { type: "checkbox", onChange: this.handleChangeGrayscale })), React.createElement("div", null, React.createElement("div", { className: "em10 right inline-block" }, "Brightness:"), React.createElement("input", { type: "number", step: "any", className: "number", value: this.state.brightness, onChange: this.handleChangeBrightness })), React.createElement("div", null, React.createElement("div", { className: "em10 right inline-block" }, "Contrast:"), React.createElement("input", { type: "number", step: "any", className: "number", value: this.state.contrast, onChange: this.handleChangeContrast })), React.createElement("div", null, React.createElement("div", { className: "em10 right inline-block" }, "Gaussian:"), React.createElement("input", { type: "number", step: "any", className: "number", value: this.state.gaussian, onChange: this.handleChangeGaussian })), React.createElement("div", null, React.createElement("div", { className: "em10 right inline-block" }, "Blur:"), React.createElement("input", { type: "number", step: "any", className: "number", value: this.state.blur, onChange: this.handleChangeBlur }))));
 	        }
 	    }]);
 

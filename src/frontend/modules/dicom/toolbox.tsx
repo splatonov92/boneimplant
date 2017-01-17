@@ -58,37 +58,37 @@ class Toolbox extends React.Component<ToolboxProps, ToolboxState> {
     }
 
     render() {
-        return (<div>
+        return (<div className="inline">
             Toolbox
-            <div>
-                <div className="inline">
-                    Grayscale: 
+            <div className="inline">
+                <div>
+                    <div className="em10 right inline-block">Grayscale:</div>
                     <input type="checkbox" onChange={this.handleChangeGrayscale}/>
                 </div>
-                <div className="inline">
-                    Brightness: 
+                <div>
+                    <div className="em10 right inline-block">Brightness:</div>
                     <input type="number" 
                         step="any"
                         className="number" 
                         value={this.state.brightness} 
                         onChange={this.handleChangeBrightness}/>
                 </div>
-                <div className="inline">
-                    Contrast: 
+                <div>
+                    <div className="em10 right inline-block">Contrast:</div>
                     <input type="number" 
                         step="any"
                         className="number" 
                         value={this.state.contrast} onChange={this.handleChangeContrast}/>
                 </div>
-                <div className="inline">
-                    Gaussian: 
+                <div>
+                    <div className="em10 right inline-block">Gaussian:</div>
                     <input type="number" 
                         step="any"
                         className="number" 
                         value={this.state.gaussian} onChange={this.handleChangeGaussian}/>
                 </div>
-                <div className="inline">
-                    Blur: 
+                <div>
+                    <div className="em10 right inline-block">Blur:</div>
                     <input type="number" 
                         step="any"
                         className="number" 
