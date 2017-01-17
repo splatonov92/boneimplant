@@ -43,7 +43,6 @@ class Toolbox extends React.Component<ToolboxProps, ToolboxState> {
         let state = this.state;
         state.contrast = event.currentTarget.value;
         this.setState(state);
-
     }
 
     handleChangeGaussian(event) {
